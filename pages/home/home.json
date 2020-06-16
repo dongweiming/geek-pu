@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mp-halfScreenDialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
+  }
+}

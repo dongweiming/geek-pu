@@ -1,0 +1,16 @@
+{
+  "desc": "站点地图",
+  "rules": [{
+    "action": "allow",
+    "page": "pages/home/home",
+    "params": [
+      "featured"
+    ]
+  }, {
+    "action": "allow",
+    "page": "pages/home/home"
+  }, {
+    "action": "allow",
+    "page": "pages/launch/launch"
+  }]
+}

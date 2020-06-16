@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/home/home"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#44BF59"
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
+}
