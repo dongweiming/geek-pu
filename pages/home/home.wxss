@@ -102,10 +102,6 @@
   margin-right: 8rpx;
 }
 
-.weui-search-bar__cancel-btn {
-  width: 70rpx;
-}
-
 .douban {
   padding-block: 16rpx;
   font-size: 14px;

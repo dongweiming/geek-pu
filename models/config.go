@@ -2,15 +2,18 @@ package models
 
 import (
 	"fmt"
-	"github.com/pelletier/go-toml"
 	"os"
-	"path/filepath"
+	"path"
+	"runtime"
+
+	"github.com/pelletier/go-toml"
 )
 
-const DefaultFilePath = "config.toml"
+const DefaultFilePath = "../config.toml"
 
 func ReadConfig() *toml.Tree {
-	path, _ := filepath.Abs(DefaultFilePath)
+	_, filename, _, _ := runtime.Caller(1)
+	path := path.Join(path.Dir(filename), "../config.toml")
 	var config *toml.Tree
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		config, _ = toml.Load(`

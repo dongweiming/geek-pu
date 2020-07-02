@@ -142,7 +142,7 @@ Page({
   inputTyping: function(e) {
     this.setData({
       inputVal: e.detail.value
-    })
+    }, () => this.search(this))
   },
   toDouban: function(e) {
     const game = this.data.games[this.data.selectedGameIndex];

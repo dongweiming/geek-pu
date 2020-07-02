@@ -1,20 +1,6 @@
 <view class="page">
   <!-- 搜索框 -->
-  <view class="weui-search-bar">
-    <view class="weui-search-bar__form">
-      <view class="weui-search-bar__box">
-        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input type="text" class="weui-search-bar__input" placeholder="输入游戏名称" value="{{inputVal}}" bindinput="inputTyping" bindconfirm="search" />
-        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-          <icon type="clear" size="14"></icon>
-        </view>
-      </view>
-    </view>
-    <view class="weui-search-bar__cancel-btn" bindtap="search">
-      <text wx:if="{{!isSearching}}">搜索</text>
-      <view class="weui-loading" wx:if="{{isSearching}}"></view>
-    </view>
-  </view>
+  <mp-searchbar search="search" placeholder="输入游戏名称" bindclear="clearInput" bindinput="inputTyping"></mp-searchbar>
 
   <!-- 条件筛选 -->
   <view class="weui-media-box weui-media-box_small-appmsg">
