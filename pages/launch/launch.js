@@ -11,6 +11,14 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    var openid = wx.getStorageSync('GeekPuOpenId')
+    if (openid) {
+      getApp().globalData.openid = openid
+      wx.redirectTo({
+        url: '../home/home'
+      })
+      return
+    }
     wx.login({
       success: ({ code }) => {
         wx.request({
@@ -19,6 +27,10 @@ Page({
           data: { code },
           success: ({ data }) => {
             getApp().globalData.openid = data.openid;
+            wx.setStorage({
+              key: "GeekPuOpenId",
+              data: data.openid
+            })
             wx.redirectTo({
               url: '../home/home'
             })

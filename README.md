@@ -29,9 +29,13 @@
 # 如果是自己的数据，可以通过manage.go创建
 # go run manage.go add -t 马里奥派对 -c pd.jpg -r 2018-10-05 -s 9.1 -d 30245974 -a 美版 -l 简体中文 -p Switch
 # go run manage.go update -p 2900 -i 14 -t 4
-❯ go run server.go  # 启动服务
+❯ go run server.go  # 启动服务, 当然也可以使用只对外用Nginx
 ```
 
 ## Experience it
 
-扫描下方二维码可以进行体验
+扫描下方小程序码可以进行体验
+
+<p align="center">
+<img src="https://github.com/dongweiming/geek-pu/blob/master/assets/code.jpg">
+</p>

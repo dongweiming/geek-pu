@@ -8,10 +8,10 @@ Page({
       disabled: false
     },
     games: [],
+    allGames: [],
     isLoading: false,
     selectedGameIndex: 0,
     showFilterDialog: false,
-    isSearching: false,
     filters: [{
         text: "所有区",
         value: "zone:all"
@@ -83,6 +83,7 @@ Page({
         const games = data['games']
         homePage.setData({
           games: games, // homePage.data.games.concat(games),
+          allGames: games,
           isLoading: false
         })
       }
@@ -112,6 +113,7 @@ Page({
         const games = data['games']
         homePage.setData({
           games: games,
+          allGames: games,
           isLoading: false
         }, callback)
       }
@@ -136,13 +138,16 @@ Page({
   },
   clearInput: function() {
     this.setData({
-      inputVal: ""
-    }, () => this.reFetchData(this));
+      inputVal: "",
+      games: this.data.allGames
+    })
   },
   inputTyping: function(e) {
+    var val = e.detail.value
     this.setData({
-      inputVal: e.detail.value
-    }, () => this.search(this))
+      inputVal: val,
+      games: this.data.allGames.filter(game => game.title.includes(val))
+    })
   },
   toDouban: function(e) {
     const game = this.data.games[this.data.selectedGameIndex];
@@ -153,15 +158,6 @@ Page({
         // 打开成功
       }
     })
-  },
-  search: function() {
-    this.setData({
-      isSearching: true
-    }, () => this.reFetchData(this, () => {
-      this.setData({
-        isSearching: false
-      })
-    }))
   },
   selectGame: function({
     currentTarget
