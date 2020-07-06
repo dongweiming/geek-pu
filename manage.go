@@ -87,6 +87,12 @@ func main() {
 						Usage:    "Suuported platforms",
 						Required: true,
 					},
+					&cli.StringFlag{
+						Name:     "desc",
+						Aliases:  []string{"v"},
+						Usage:    "Desc",
+						Required: false,
+					},
 				},
 				Action: func(c *cli.Context) error {
 					title := c.String("title")
@@ -99,9 +105,10 @@ func main() {
 					platforms := c.String("platforms")
 					price := c.Float64("price")
 					quantity := c.Int("quantity")
+					desc := c.String("desc")
 					game := Game{Title: title, Cover: cover, ReleaseDate: release_date, Rating: rating,
 						Area: area, Languages: languages, Platforms: platforms, DoubanID: douban_id,
-						Price: price, Quantity: quantity}
+						Price: price, Quantity: quantity, Desc: desc}
 					db := GetDB()
 					defer db.Close()
 					if db.NewRecord(game) {

@@ -17,6 +17,10 @@ Page({
         value: "zone:all"
       },
       {
+        text: "有库存",
+        value: "in-stock"
+      },
+      {
         text: "澳服",
         value: "zone:au"
       },
@@ -153,7 +157,7 @@ Page({
     const game = this.data.games[this.data.selectedGameIndex];
     wx.navigateToMiniProgram({
       appId: 'wx2f9b06c1de1ccfca',
-      path: 'page/subject/subject?type=game&id=' + game.douban_id,
+      path: 'pages/subject/subject?type=game&id=' + game.douban_id,
       success(res) {
         // 打开成功
       }

@@ -219,6 +219,8 @@ func GetGameList(c *gin.Context) {
 				ids = append(ids, sub.Gid)
 			}
 			db = db.Where(ids)
+		} else if strings.HasPrefix(filter, "in-stock") {
+			db = db.Where("quantity > 0")
 		}
 	}
 

@@ -66,6 +66,7 @@
   <image class="dialog-thumb" src="https://dw-origin.dongwm.com/img/dw/photo-{{games[selectedGameIndex].cover}}"></image>
   </view>
   <button class="douban" bindtap="toDouban">去豆瓣了解它</button>
+  <view class="weui-half-screen-dialog__tips" wx:if="{{games[selectedGameIndex].desc}}">{{ games[selectedGameIndex].desc }}</view>
   <view class="weui-half-screen-dialog__tips">{{ games[selectedGameIndex].quantity > 2 ? '预定要快哟' : '库存紧张' }}</view>
 </view>
 </mp-halfScreenDialog>
