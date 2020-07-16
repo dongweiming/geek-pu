@@ -38,6 +38,7 @@ type Game struct {
 	Price       float64   `gorm:"type:decimal(10, 2)" json:"price"`
 	Quantity    int       `gorm:"type:int" json:"quantity"`
 	Desc        string    `gorm:"type:varchar(200)" json:"desc"`
+	Subscribed  bool      `sql:"-" json:"subscribed"`
 }
 
 func (game Game) IsRefresh() bool {
@@ -50,12 +51,10 @@ func (game *Game) MarshalJSON() ([]byte, error) {
 	type Alias Game
 	return json.Marshal(&struct {
 		*Alias
-		Refresh    bool `json:"refresh"`
-		Subscribed bool `json:"subscribed"`
+		Refresh bool `json:"refresh"`
 	}{
-		Alias:      (*Alias)(game),
-		Refresh:    game.IsRefresh(),
-		Subscribed: false,
+		Alias:   (*Alias)(game),
+		Refresh: game.IsRefresh(),
 	})
 }
 

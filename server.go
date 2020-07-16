@@ -205,7 +205,14 @@ func GetGameList(c *gin.Context) {
 				db = db.Order(fmt.Sprintf("price %s", sorts[1]))
 			}
 		} else if strings.HasPrefix(filter, "edition") {
-			db = db.Where("id >= ? AND id <= ?", 13, 15).Order("release_date")
+			if ids := GetEditionIds(); len(ids) != 0 {
+				db = db.Where("id IN (?)", ids).Order("release_date")
+			} else {
+				c.JSON(200, gin.H{
+					"games": games,
+				})
+				return
+			}
 		} else if strings.HasPrefix(filter, "mine:subscription") {
 			db.Select("gid").Where("uid = ?", openId).Find(&subs)
 			if len(subs) == 0 {

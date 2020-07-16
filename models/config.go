@@ -24,6 +24,9 @@ host = "localhost"
 port = "3306"
 database = "test"
 charset = "utf8"
+
+[product]
+edition_ids = [13, 14]
 `)
 	} else {
 		config, _ = toml.LoadFile(path)
@@ -42,4 +45,10 @@ func GetDbUri() string {
 	charset := dbConfig.Get("charset").(string)
 
 	return fmt.Sprintf("%s:%s@(%s:%s)/%s?parseTime=true&charset=%s", user, passwd, host, port, database, charset)
+}
+
+func GetEditionIds() []int64 {
+	config := ReadConfig()
+	ids := config.GetArray("product.edition_ids").([]int64)
+	return ids
 }
